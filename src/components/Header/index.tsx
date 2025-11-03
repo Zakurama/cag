@@ -25,8 +25,10 @@ export default function Header() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await fetch('/api/users/me');
-      if (user) {
+      const req = await fetch('/api/users/me');
+      const data = await req.json();
+      console.log(data);
+      if (data.user) {
         setHasAccount(true);
       }
     };
