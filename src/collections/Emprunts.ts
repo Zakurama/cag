@@ -114,13 +114,17 @@ export const Emprunts: CollectionConfig = {
 
         const games = await getGamesFromEmprunt(doc, req);
 
-        const userMailDate = new Date(
-          new Date(doc.dateRetour).getTime() - 1 * 24 * 60 * 60 * 1000
-        ); // 1 day before return date
+        const returnDate = new Date(doc.dateRetour);
 
-        const adminMailDate = new Date(
-          new Date(doc.dateRetour).getTime() + 1 * 24 * 60 * 60 * 1000
-        ); // 1 day after return date
+        // Set reminders 1 day before and 1 day after the return date
+        // Always schedule them at 9:00 AM local time
+        const userMailDate = new Date(returnDate);
+        userMailDate.setDate(returnDate.getDate() - 1);
+        userMailDate.setHours(9, 0, 0, 0);
+
+        const adminMailDate = new Date(returnDate);
+        adminMailDate.setDate(returnDate.getDate() + 1);
+        adminMailDate.setHours(9, 0, 0, 0);
 
         const jobIds: number[] = [];
         if (doc.borrower && userMailDate > new Date()) {
