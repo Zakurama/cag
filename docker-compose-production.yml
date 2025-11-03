@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  node:
+    image: YOUR_IMAGE_NAME:VERSION
+    user: "USER_ID"
+    userns_mode: "host"
+    restart: always
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:YOUR_DOMAIN_HERE" # Change this value
+      - "traefik.port=3333"
+      - "traefik.network=proxy"
+    volumes:
+      - "PATH_TO_YOUR_DB/cag.db:/app/cag.db" # Adjust the path to your database file
+    environment:
+      - HOSTNAME=0.0.0.0
+      - PORT=3333
+      - DATABASE_URI=file:./cag.db
+      - PAYLOAD_SECRET=YOUR_PRODUCTION_SECRET_HERE # Change this value (different from development)
+      - SMTP_HOST=YOUR_SMTP_HOST_HERE # Change this value
+      - SMTP_PORT=YOUR_SMTP_PORT_HERE # Change this value
+
+networks:
+  proxy:
+    external: true
