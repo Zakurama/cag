@@ -23,6 +23,7 @@ export default buildConfig({
   admin: {
     components: {
       header: ['./components/payload/Header/index.tsx'],
+      actions: ['./components/payload/Action/index.tsx'],
     },
     user: Users.slug,
     importMap: {

@@ -10,9 +10,11 @@ import SocialButtons from './SocialButtons';
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [hasAccount, setHasAccount] = useState(false);
 
   const links: { href: string; label: string }[] = [
     { href: '/', label: 'Accueil' },
+    ...(hasAccount ? [{ href: '/admin', label: 'Admin' }] : []),
     { href: '/games', label: 'Jeux' },
   ];
 
@@ -20,6 +22,16 @@ export default function Header() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await fetch('/api/users/me');
+      if (user) {
+        setHasAccount(true);
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
     <header className='flex flex-col items-center pt-8 pb-6 px-8 text-center relative z-50'>
