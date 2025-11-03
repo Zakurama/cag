@@ -1,4 +1,5 @@
 import Row from '@/components/Accueil/Row';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
 
@@ -98,3 +99,9 @@ export default async function HomePage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Centr'All Games - L'Association De Jeux de l'École Centrale de Lille",
+  description:
+    "Bienvenue sur le site officiel de Centr’All Games, l'association de jeux de l'École Centrale de Lille",
+};

@@ -1,7 +1,7 @@
 {
   "name": "cag",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
+  "description": "Centr'All Games website built with Payload CMS and Next.js",
   "license": "MIT",
   "type": "module",
   "scripts": {

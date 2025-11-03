@@ -1,5 +1,6 @@
 import GamePageRender from '@/components/GamePage';
 import { getGames } from '@/service/data';
+import { Metadata } from 'next';
 import React from 'react';
 
 export default async function GamePage() {
@@ -17,3 +18,9 @@ export default async function GamePage() {
 }
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: "Centr'All Games - Jeux",
+  description:
+    "Découvrez notre vaste catalogue de jeux de société à emprunter ou à jouer sur place avec Centr'All Games.",
+};
