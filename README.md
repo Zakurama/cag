@@ -24,11 +24,7 @@ That's it! Changes made in `./src` will be reflected in your app. Go to `http://
 
 ### Production
 
-This project use [Docker](https://www.docker.com) to deploy the project. To do so, follow these steps:
-
-1. Build the image `docker build -t YOUR_IMAGE_NAME .`
-2. Push the image to your registry `docker push YOUR_IMAGE_NAME:VERSION`
-3. Deploy with Docker Compose. An example configuration is available in `docker-compose-production.yml`. Since this project uses SQLite, create an empty database file and mount it into your Docker volume to persist data between deployments.
+When pushing on main, a github workflow pushes the application's image to this repository packages.
 
 ### Database
 
