@@ -13,7 +13,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         {/* Background layer */}
         <div className='fixed inset-0'>
           <Squares
-            speed={0.3}
+            speed={0}
             squareSize={40}
             direction='diagonal'
             borderColor='#ECD540'
