@@ -88,39 +88,50 @@ const Squares: React.FC<SquaresProps> = ({
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
-    const updateAnimation = () => {
-      if (speed <= 0) return;
-      const effectiveSpeed = Math.max(speed, 0.1);
-      switch (direction) {
-        case 'right':
-          gridOffset.current.x =
-            (gridOffset.current.x - effectiveSpeed + squareSize) % squareSize;
-          break;
-        case 'left':
-          gridOffset.current.x =
-            (gridOffset.current.x + effectiveSpeed + squareSize) % squareSize;
-          break;
-        case 'up':
-          gridOffset.current.y =
-            (gridOffset.current.y + effectiveSpeed + squareSize) % squareSize;
-          break;
-        case 'down':
-          gridOffset.current.y =
-            (gridOffset.current.y - effectiveSpeed + squareSize) % squareSize;
-          break;
-        case 'diagonal':
-          gridOffset.current.x =
-            (gridOffset.current.x - effectiveSpeed + squareSize) % squareSize;
-          gridOffset.current.y =
-            (gridOffset.current.y - effectiveSpeed + squareSize) % squareSize;
-          break;
-        default:
-          break;
-      }
+    const updateAnimation =
+      speed <= 0.1
+        ? () => {
+            drawGrid();
+            requestRef.current = requestAnimationFrame(updateAnimation);
+          }
+        : () => {
+            const effectiveSpeed = Math.max(speed, 0.1);
+            switch (direction) {
+              case 'right':
+                gridOffset.current.x =
+                  (gridOffset.current.x - effectiveSpeed + squareSize) %
+                  squareSize;
+                break;
+              case 'left':
+                gridOffset.current.x =
+                  (gridOffset.current.x + effectiveSpeed + squareSize) %
+                  squareSize;
+                break;
+              case 'up':
+                gridOffset.current.y =
+                  (gridOffset.current.y + effectiveSpeed + squareSize) %
+                  squareSize;
+                break;
+              case 'down':
+                gridOffset.current.y =
+                  (gridOffset.current.y - effectiveSpeed + squareSize) %
+                  squareSize;
+                break;
+              case 'diagonal':
+                gridOffset.current.x =
+                  (gridOffset.current.x - effectiveSpeed + squareSize) %
+                  squareSize;
+                gridOffset.current.y =
+                  (gridOffset.current.y - effectiveSpeed + squareSize) %
+                  squareSize;
+                break;
+              default:
+                break;
+            }
 
-      drawGrid();
-      requestRef.current = requestAnimationFrame(updateAnimation);
-    };
+            drawGrid();
+            requestRef.current = requestAnimationFrame(updateAnimation);
+          };
 
     const handleMouseMove = (event: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
