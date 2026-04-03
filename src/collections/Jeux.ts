@@ -37,6 +37,12 @@ export const Jeux: CollectionConfig = {
       label: 'URL des règles',
     },
     {
+      name: 'deposit',
+      type: 'number',
+      label: 'Caution (en euros)',
+      min: 0,
+    },
+    {
       name: 'aquisitionDate',
       type: 'date',
       label: "Date d'acquisition",
@@ -107,7 +113,7 @@ export const Jeux: CollectionConfig = {
             originalDoc.nbGamesAvailable + (data.nbGames - originalDoc.nbGames);
           if (data.nbGamesAvailable < 0) {
             throw new Error(
-              'Le nombre de jeux disponibles ne peut pas être négatif.'
+              'Le nombre de jeux disponibles ne peut pas être négatif.',
             );
           }
         }
@@ -115,7 +121,7 @@ export const Jeux: CollectionConfig = {
           data.nbGamesAvailable != -1 ? data.nbGamesAvailable : data.nbGames;
         if (data.nbGamesAvailable < 0) {
           throw new Error(
-            'Le nombre de jeux disponibles ne peut pas être négatif.'
+            'Le nombre de jeux disponibles ne peut pas être négatif.',
           );
         }
         return data;
@@ -127,7 +133,7 @@ export const Jeux: CollectionConfig = {
           // Ensure nbGamesAvailable is not less than 0
           if (data.nbGamesAvailable < 0) {
             throw new Error(
-              'Le nombre de jeux disponibles ne peut pas être négatif.'
+              'Le nombre de jeux disponibles ne peut pas être négatif.',
             );
           }
         }

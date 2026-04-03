@@ -1,4 +1,6 @@
 {
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
   "npm.packageManager": "pnpm",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[typescript]": {
