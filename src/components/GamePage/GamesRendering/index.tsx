@@ -22,7 +22,7 @@ const GamesRendering: React.FC<GamesRenderingProps> = ({ games }) => {
 
   const handleReorder = (
     columnIndex: number,
-    direction: Exclude<SortDirection, null>
+    direction: Exclude<SortDirection, null>,
   ) => {
     setSortState((prev) => {
       // if the same column and same direction -> deactivate
@@ -109,6 +109,15 @@ const GamesRendering: React.FC<GamesRenderingProps> = ({ games }) => {
             ? a.nbGamesAvailable - b.nbGamesAvailable
             : b.nbGamesAvailable - a.nbGamesAvailable;
         }
+
+        case 5: {
+          // Deposit
+          const valA = a.deposit ?? 0;
+          const valB = b.deposit ?? 0;
+
+          return sortState.direction === 'asc' ? valA - valB : valB - valA;
+        }
+
         default:
           return 0;
       }

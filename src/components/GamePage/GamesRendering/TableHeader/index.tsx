@@ -16,6 +16,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ sortState, onReorder }) => {
     'clock',
     'group',
     'warehouse',
+    'euro',
     'external-link',
   ] as const;
 
@@ -25,6 +26,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ sortState, onReorder }) => {
     'Durées',
     'Joueurs',
     'Disponibilités',
+    'Cautions',
     'Règles',
   ];
 
@@ -33,7 +35,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ sortState, onReorder }) => {
       <TR>
         {columnLabels.map((label, index) => (
           <TH key={index} ariaLabel={label}>
-            {index < 5 ? (
+            {index < columnLabels.length - 1 ? (
               <Content
                 icon={tableIconIds[index]}
                 isAscending={

@@ -7,6 +7,7 @@ type SpriteMap = {
     | 'clock'
     | 'group'
     | 'warehouse'
+    | 'euro'
     | 'external-link';
 };
 

@@ -23,6 +23,7 @@ const TableBody: React.FC<TableBodyProps> = ({ games }) => {
         const players = getPlayerFormatFromGame(game);
         const time = getGameTimeFormatFromGame(game);
         const available = game.nbGamesAvailable > 0;
+        const deposit = game.deposit ? `${game.deposit} €` : '-';
 
         return (
           <TR key={game.id} className='backdrop-blur-xs bg-white/10 shadow-sm'>
@@ -31,6 +32,7 @@ const TableBody: React.FC<TableBodyProps> = ({ games }) => {
             <TD>{time}</TD>
             <TD>{players}</TD>
             <TD>{available ? 'Disponible' : 'Emprunté'}</TD>
+            <TD>{deposit}</TD>
             <TD>
               {game.ruleUrl ? (
                 <a
