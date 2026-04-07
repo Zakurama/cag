@@ -3,10 +3,11 @@ import { TH, TR } from '@/utils/Table';
 import Content from './Content';
 import Icon from '@/utils/Icons';
 import { SortState } from '../index';
+import { Column, indexToColumn } from '@/utils/Table/Sort';
 
 interface TableHeaderProps {
   sortState: SortState;
-  onReorder: (columnIndex: number, direction: 'asc' | 'desc') => void;
+  onReorder: (column: Column, direction: 'asc' | 'desc') => void;
 }
 
 const TableHeader: React.FC<TableHeaderProps> = ({ sortState, onReorder }) => {
@@ -30,29 +31,33 @@ const TableHeader: React.FC<TableHeaderProps> = ({ sortState, onReorder }) => {
     'Règles',
   ];
 
+  const isLastColumn = (index: number) => index === columnLabels.length - 1;
+
   return (
     <thead className='backdrop-blur-xs bg-white/10 shadow-sm'>
       <TR>
         {columnLabels.map((label, index) => (
           <TH key={index} ariaLabel={label}>
-            {index < columnLabels.length - 1 ? (
-              <Content
-                icon={tableIconIds[index]}
-                isAscending={
-                  sortState.column === index && sortState.direction === 'asc'
-                }
-                isDescending={
-                  sortState.column === index && sortState.direction === 'desc'
-                }
-                onReorderAsc={() => onReorder(index, 'asc')}
-                onReorderDesc={() => onReorder(index, 'desc')}
-                columnLabel={label}
-              />
-            ) : (
+            {isLastColumn(index) ? (
               <>
                 <span className='sr-only'>Voir les règles</span>
                 <Icon sprite='table' id={tableIconIds[index]} />
               </>
+            ) : (
+              <Content
+                icon={tableIconIds[index]}
+                isAscending={
+                  sortState.column === indexToColumn[index] &&
+                  sortState.direction === 'asc'
+                }
+                isDescending={
+                  sortState.column === indexToColumn[index] &&
+                  sortState.direction === 'desc'
+                }
+                onReorderAsc={() => onReorder(indexToColumn[index], 'asc')}
+                onReorderDesc={() => onReorder(indexToColumn[index], 'desc')}
+                columnLabel={label}
+              />
             )}
           </TH>
         ))}
