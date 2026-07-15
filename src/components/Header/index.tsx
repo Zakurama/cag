@@ -6,8 +6,13 @@ import LogoLink from './LogoLink';
 import Links from './Links';
 import { Menu, X } from 'lucide-react';
 import SocialButtons from './SocialButtons';
+import ThemeToggle from './ThemeToggle';
 
-export default function Header() {
+interface HeaderProps {
+  initialIsDark: boolean;
+}
+
+export default function Header({ initialIsDark }: HeaderProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [hasAccount, setHasAccount] = useState(false);
@@ -37,12 +42,13 @@ export default function Header() {
 
   return (
     <header className='flex flex-col items-center pt-8 pb-6 px-8 text-center relative z-50'>
-      <div className='backdrop-blur-xs bg-white/10 container max-w-6xl flex flex-row items-center justify-between w-full border border-white/30 shadow-[0_0_25px_rgba(255,255,255,0.1)] px-6 py-2 rounded-full relative'>
+      <div className='backdrop-blur-xs bg-black/10 dark:bg-white/10 container max-w-6xl flex flex-row items-center justify-between w-full border border-black/10 dark:border-white/30 shadow-[0_0_25px_rgba(0,0,0,0.1)] dark:shadow-[0_0_25px_rgba(255,255,255,0.1)] px-6 py-2 rounded-full relative'>
         <LogoLink isActive={pathname === '/'} />
 
         {/* Desktop section */}
         <div className='hidden md:flex items-center space-x-4'>
           <Links links={links} />
+          <ThemeToggle initialIsDark={initialIsDark} />
           <SocialButtons />
         </div>
 
@@ -57,8 +63,9 @@ export default function Header() {
 
         {/* Mobile dropdown */}
         {isOpen && (
-          <div className='absolute top-full left-0 w-full mt-3 bg-black/70 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg md:hidden animate-fade-in z-50 flex flex-col items-center space-y-4 py-6'>
+          <div className='absolute top-full left-0 w-full mt-3 bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-2xl border border-black/20 dark:border-white/20 shadow-lg md:hidden animate-fade-in z-50 flex flex-col items-center space-y-4 py-6'>
             <Links links={links} />
+            <ThemeToggle initialIsDark={initialIsDark} />
             <SocialButtons />
           </div>
         )}

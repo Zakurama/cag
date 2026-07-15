@@ -15,7 +15,7 @@ const TextBubble: React.FC<TextBubbleProps> = ({
 
   return (
     <div
-      className={`backdrop-blur-xs bg-white/10 shadow-sm rounded-lg p-6 border border-gray-200 ${className}`}
+      className={`backdrop-blur-xs bg-black/10 dark:bg-white/10 shadow-sm rounded-lg p-6 border border-black/10 dark:border-white/20 ${className}`}
     >
       <Heading className='text-balance text-left text-3xl font-semibold mb-2'>
         {title}

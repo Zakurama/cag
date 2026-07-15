@@ -2,26 +2,18 @@ import React from 'react';
 // @ts-ignore
 import './styles.css';
 import Header from '@/components/Header';
-import Squares from '@/components/Squares';
+import { cookies } from 'next/headers';
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
+  const cookieStore = await cookies();
+  const theme = cookieStore.get('theme')?.value;
 
   return (
-    <html lang='fr'>
-      <body className='relative min-h-screen bg-black text-white w-full flex flex-col'>
-        {/* Background layer */}
-        <div className='fixed inset-0'>
-          <Squares
-            speed={0}
-            squareSize={40}
-            direction='diagonal'
-            borderColor='#ECD540'
-          />
-        </div>
-        {/* Foreground content */}
+    <html lang='fr' className={theme === 'dark' ? 'dark' : undefined}>
+      <body className='relative min-h-screen bg-white text-black dark:bg-zinc-950 dark:text-white w-full flex flex-col'>
         <div className='relative z-10 flex flex-col flex-1'>
-          <Header />
+          <Header initialIsDark={theme === 'dark'} />
           <main className='flex-1 relative'>{children}</main>
         </div>
       </body>

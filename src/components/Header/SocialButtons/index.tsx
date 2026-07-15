@@ -26,7 +26,13 @@ const SocialButtons: React.FC = () => {
   return (
     <div className='flex space-x-4'>
       {socials.map(({ href, platform, hoverColor }) => (
-        <a key={platform} href={href} target='_blank' rel='noopener noreferrer'>
+        <a
+          key={platform}
+          href={href}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label={`Suivez-nous sur ${platform}`}
+        >
           <Icon sprite='socials' id={platform} hoverColor={hoverColor} />
         </a>
       ))}

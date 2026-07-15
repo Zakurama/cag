@@ -34,7 +34,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({ sortState, onReorder }) => {
   const isLastColumn = (index: number) => index === columnLabels.length - 1;
 
   return (
-    <thead className='backdrop-blur-xs bg-white/10 shadow-sm'>
+    <thead className='backdrop-blur-xs bg-black/10 dark:bg-white/10 shadow-sm'>
       <TR>
         {columnLabels.map((label, index) => (
           <TH key={index} ariaLabel={label}>

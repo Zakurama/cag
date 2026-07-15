@@ -16,7 +16,7 @@ const ReorderingButton: React.FC<ReorderingButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`reordering-button text-white p-1 reordering-button ${isActive ? 'active' : ''} ${direction === 'asc' ? 'mb-1' : ''}`}
+      className={`reordering-button p-1 ${isActive ? 'active' : ''} ${direction === 'asc' ? 'mb-1' : ''}`}
       aria-label={
         direction === 'asc'
           ? `Trier les ${columnLabel} par ordre croissant`

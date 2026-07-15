@@ -17,7 +17,7 @@ const Input: React.FC<InputProps> = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className={`border border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#ff7d00] focus:border-[#ff7d00] ${className}`}
+      className={`border border-gray-400 dark:border-white/30 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-white/50 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#ff7d00] focus:border-[#ff7d00] ${className}`}
       aria-label='Recherche de jeu'
     />
   );

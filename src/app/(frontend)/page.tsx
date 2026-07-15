@@ -61,9 +61,9 @@ export default async function HomePage() {
           </p>
           <Link
             href='/games'
-            className='inline-block mt-2 px-6 py-2 rounded-full border border-white/30 
-             bg-white/10 backdrop-blur-xs text-white font-medium 
-             hover:bg-[#ff7d00]/20 hover:border-[#ff7d00]/60 
+            className='inline-block mt-2 px-6 py-2 rounded-full border border-black/20 dark:border-white/30
+             bg-black/10 dark:bg-white/10 backdrop-blur-xs font-medium
+             hover:bg-[#ff7d00]/20 hover:border-[#ff7d00]/60
              transition-all duration-300 shadow-[0_0_15px_rgba(255,125,0,0.1)]'
           >
             Consulter les jeux

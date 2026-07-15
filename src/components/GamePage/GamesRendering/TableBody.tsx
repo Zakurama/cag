@@ -26,7 +26,7 @@ const TableBody: React.FC<TableBodyProps> = ({ games }) => {
         const deposit = game.deposit ? `${game.deposit} €` : '-';
 
         return (
-          <TR key={game.id} className='backdrop-blur-xs bg-white/10 shadow-sm'>
+          <TR key={game.id} className='backdrop-blur-xs bg-black/10 dark:bg-white/10 shadow-sm'>
             <TD>{name}</TD>
             <TD>{category}</TD>
             <TD>{time}</TD>
