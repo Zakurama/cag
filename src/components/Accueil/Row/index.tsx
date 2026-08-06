@@ -4,6 +4,8 @@ import TextBubble from '../TextBubble';
 interface ImageProps {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 interface RowProps {
@@ -29,7 +31,7 @@ const Row: React.FC<RowProps> = ({
         {children}
       </TextBubble>
       <div
-        className={`relative w-auto md:w-7/12 md:h-auto h-80 flex-none md:mx-6 mx-8 ${reverse ? 'md:mr-0' : 'md:ml-0'}`}
+        className={`hidden md:block relative w-7/12 h-auto flex-none mx-6 ${reverse ? 'mr-0' : 'ml-0'}`}
       >
         <Image
           src={imageProperties.src}
@@ -37,6 +39,16 @@ const Row: React.FC<RowProps> = ({
           fill={true}
           className='rounded-4xl'
           objectFit='cover'
+        />
+      </div>
+      <div className='md:hidden relative w-auto flex-none mx-8'>
+        {/* mobile-only: fixed width/height image */}
+        <Image
+          src={imageProperties.src}
+          alt={imageProperties.alt}
+          width={imageProperties.width}
+          height={imageProperties.height}
+          className='rounded-4xl w-full h-auto'
         />
       </div>
     </div>

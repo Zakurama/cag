@@ -12,6 +12,8 @@ export default async function HomePage() {
           imageProperties={{
             src: '/personnes.jpg',
             alt: "Ensemble des membres de l'association lors de Lille aux Jeux",
+            width: 5770,
+            height: 3847,
           }}
           title='Qui sommes nous ?'
           reverse={false}
@@ -26,8 +28,10 @@ export default async function HomePage() {
         </Row>
         <Row
           imageProperties={{
-            src: '/local-cag.jpg',
+            src: '/local-cag.png',
             alt: "Image satellite de la résidence léonard de Vinci avec entouré en rouge le local Centr'AllGames",
+            width: 496,
+            height: 474,
           }}
           title='Où nous trouver ?'
           reverse={true}
@@ -49,6 +53,8 @@ export default async function HomePage() {
           imageProperties={{
             src: '/jeux.jpg',
             alt: 'Ensemble de jeux de sociétés disposés sur une table',
+            width: 1606,
+            height: 1498,
           }}
           title='Jeux et emprunts'
           reverse={false}
@@ -73,6 +79,8 @@ export default async function HomePage() {
           imageProperties={{
             src: '/lille-aux-jeux-2025.jpg',
             alt: "Affiche de Lille aux Jeux 2025 avec le logo de l'association, des informations sur les horaires, l'endroit et les activités proposées",
+            width: 1920,
+            height: 1080,
           }}
           title='Lille aux Jeux'
           reverse={true}
